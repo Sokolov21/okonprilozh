@@ -1,0 +1,15 @@
+C:\Users\User\source\repos\WpfLabBat\WpfLabBat\bin\Debug\WpfLabBat.exe.config
+C:\Users\User\source\repos\WpfLabBat\WpfLabBat\bin\Debug\WpfLabBat.exe
+C:\Users\User\source\repos\WpfLabBat\WpfLabBat\bin\Debug\WpfLabBat.pdb
+C:\Users\User\source\repos\WpfLabBat\WpfLabBat\obj\Debug\WpfLabBat.csprojAssemblyReference.cache
+C:\Users\User\source\repos\WpfLabBat\WpfLabBat\obj\Debug\MainWindow.g.cs
+C:\Users\User\source\repos\WpfLabBat\WpfLabBat\obj\Debug\App.g.cs
+C:\Users\User\source\repos\WpfLabBat\WpfLabBat\obj\Debug\WpfLabBat_MarkupCompile.cache
+C:\Users\User\source\repos\WpfLabBat\WpfLabBat\obj\Debug\WpfLabBat_MarkupCompile.lref
+C:\Users\User\source\repos\WpfLabBat\WpfLabBat\obj\Debug\MainWindow.baml
+C:\Users\User\source\repos\WpfLabBat\WpfLabBat\obj\Debug\WpfLabBat.g.resources
+C:\Users\User\source\repos\WpfLabBat\WpfLabBat\obj\Debug\WpfLabBat.Properties.Resources.resources
+C:\Users\User\source\repos\WpfLabBat\WpfLabBat\obj\Debug\WpfLabBat.csproj.GenerateResource.cache
+C:\Users\User\source\repos\WpfLabBat\WpfLabBat\obj\Debug\WpfLabBat.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\WpfLabBat\WpfLabBat\obj\Debug\WpfLabBat.exe
+C:\Users\User\source\repos\WpfLabBat\WpfLabBat\obj\Debug\WpfLabBat.pdb

@@ -1,0 +1,28 @@
+﻿<Window x:Class="WpfLabBat.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfLabBat"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel VerticalAlignment="Bottom" Grid.RowSpan="3">
+            <Button Content="Button1"/>
+        </StackPanel>
+        <WrapPanel Grid.Column="1" ItemWidth="600">
+            <Button Background="Blue" Content="1" />
+            <Button Background="White" Content="2" />
+            <Button Background="Red" Content="3" />
+        </WrapPanel>
+    </Grid>
+</Window>
