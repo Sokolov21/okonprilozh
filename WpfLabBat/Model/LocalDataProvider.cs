@@ -19,6 +19,17 @@ namespace WpfLabBat.Model
             new Car{Name="КамАЗ",Speed=90, LiftingCapacity=3500, Cena=5000, Legko="Грузовая"},
                 };
             }
+
+        public IEnumerable<Legko> GetLegkos()
+        {
+            return new Legko[] 
+            { 
+            new Legko{Title="Легковая"},
+            new Legko{Title="Грузовая"},
+            new Legko{Title="Турбореактивная"}
+            };
+
         }
+    }
 }
 

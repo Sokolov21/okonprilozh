@@ -27,7 +27,7 @@
     ItemsSource="{Binding CarList}">
             <DataGrid.Columns>
                 <DataGridTextColumn
-            Header="Модель"
+            Header="Модель (марка)"
             Binding="{Binding Name}"/>
                 <DataGridTextColumn
             Header="Скорость"
@@ -43,6 +43,48 @@
             Binding="{Binding Legko}"/>
             </DataGrid.Columns>
          </DataGrid><Image Source="/Photo/Логотип_ФГК.png" Grid.RowSpan="2"/>
+        <WrapPanel Grid.Column="1">
+            <Label 
+    Content="Виды:"
+    VerticalAlignment="Center"/>
+            
 
+            <ComboBox
+    Name="LegkoFilterComboBox"
+    SelectionChanged="LegkoFilterComboBox_SelectionChanged"
+    VerticalAlignment="Center"
+    MinWidth="100"
+    SelectedIndex="0"
+    ItemsSource="{Binding LegkoList}">
+
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <Label 
+                Content="{Binding Title}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <Label 
+    Content="Искать" 
+    VerticalAlignment="Center"/>
+            <TextBox
+    Width="200"
+    VerticalAlignment="Center"
+    x:Name="SearchFilterTextBox" 
+    KeyUp="SearchFilter_KeyUp" TextChanged="SearchFilterTextBox_TextChanged"/>
+            <RadioButton
+    GroupName="Age"
+    Tag="1"
+    Content="по возрастанию"
+    IsChecked="True" 
+    Checked="RadioButton_Checked"
+    VerticalAlignment="Center"/>
+            <RadioButton
+    GroupName="Age"
+    Tag="2"
+    Content="по убыванию"
+    Checked="RadioButton_Checked"
+    VerticalAlignment="Center"/>
+        </WrapPanel>
     </Grid>
 </Window>

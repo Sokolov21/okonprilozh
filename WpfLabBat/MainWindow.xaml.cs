@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,19 +20,81 @@ namespace WpfLabBat
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, INotifyPropertyChanged
     {
-        public IEnumerable<Car> CarList { get; set; }
+        public string SelectedLegko = "";
+        public List<Legko> LegkoList { get; set; }
+
+        private IEnumerable<Car> _CarList = null;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public IEnumerable<Car> CarList
+        {
+            get
+            {
+                var res = _CarList;
+
+                
+                res.Where(c => (SelectedLegko == "Все виды" || c.Legko == SelectedLegko));
+                if (SearchFilter != "")
+                    res = res.Where(c => c.Name.IndexOf(SearchFilter, StringComparison.OrdinalIgnoreCase) >= 0);
+                if (SortAsc) res = res.OrderBy(c => c.Name);
+                else res = res.OrderByDescending(c => c.Name);
+                return res;
+            }
+            set
+            {
+                _CarList = value;
+            }
+        }
+
         public MainWindow()
         {
             InitializeComponent();
             DataContext = this;
             Globals.dataProvider = new LocalDataProvider();
             CarList = Globals.dataProvider.GetCars();
+            LegkoList = Globals.dataProvider.GetLegkos().ToList();
+            LegkoList.Insert(0, new Legko { Title = "Все виды" });
+            
         }
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
+           
+
+        }
+        private void Invalidate()
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs("CarList"));
+        }
+
+        private void LegkoFilterComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            SelectedLegko = (LegkoFilterComboBox.SelectedItem as Legko).Title;
+            Invalidate();
+        }
+
+        private void SearchFilterTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+        private string SearchFilter = "";       
+        
+        private void SearchFilter_KeyUp(object sender, KeyEventArgs e)
+        {
+            SearchFilter = SearchFilterTextBox.Text;
+            Invalidate();
+        }
+        private bool SortAsc = true;
+
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            SortAsc = (sender as RadioButton).Tag.ToString() == "1";
+            Invalidate();
         }
     }
+
 }

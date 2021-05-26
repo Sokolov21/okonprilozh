@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace WpfLabBat.Model
 {
-    interface IDataProvider
+    public class Legko
     {
-        IEnumerable<Car> GetCars();
-        IEnumerable<Legko> GetLegkos();
-
+        public string Title { get; set; }
+        public int id { get; set; }
     }
 }

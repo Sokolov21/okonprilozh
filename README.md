@@ -13,8 +13,8 @@
   </tr>
   <tr>
     <br><br><td style="text-align: right; border: none; height: 20em;">
-      Разработала:<br/>
-      Соколов Артём<br>
+      Разработал:<br/>
+      Смирнов Евгений <br>
       Группа: И-21<br>
       Преподаватель:<br>
       Колесников Евгений Иванович
@@ -30,30 +30,18 @@
 
 # Цели и задачи:
 
-Используя материалы лекции Каркас приложения. Модель данных. Привязка данных. Табличный вывод. и классы из предыдущих лабораторных работ разработать WPF-приложение. Логотип подставить свой, соответствующий вашей предметной области.
+Используя материалы лекций Фильтрация данных и Поиск, сортировка доработать WPF-приложение из прошлой лабы.
  # Краткий материал.
 
-* Атрибут *CanUserAddRows="False"* запрещает элементу **DataGrid** добавлять строки с таблицу
+В приложениях часто требуется отфильтровать данные либо по словарному полю, либо по каким-либо условиям. На втором варианте мы пока останавливаться не будем - сделаем фильтрацию по словарю.
 
-* Атриут *AutoGenerateColumns="False"* запрещает автоматическое формирование столбцов таблицы - мы вручную описываем те столбцы, которые хотим видеть.
+Суть фильтрации сводится к тому, что возвращается не полный список объектов, а отфильтрованный по какому-то признаку. Для получения фильтрованного списка реализуем геттер и сеттер для списка
 
-* Атрибут *ItemsSource="{Binding CatList}"* "привязывает" к таблице источник данных - наш список кошек. 
+# Что же сделал?  
 
-* В колонках таблицы мы уже "привязываемся" к свойствам класса источника данных# Что же я делала?
-
-# Что же делал?  
-
-Используя материалы лекции Каркас приложения. Модель данных. Привязка данных. Табличный вывод. и классы из предыдущих лабораторных работ разработала WPF-приложение. Логотип подставила свой, соответствующий вашей предметной области.
+Создал фильтрацию данных.
      
     ```
-    <Window x:Class="WpfLabBat.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WpfLabBat"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
     <Grid ShowGridLines="True">
         <Grid.RowDefinitions>
             <RowDefinition Height="50"></RowDefinition>
@@ -75,7 +63,7 @@
     ItemsSource="{Binding CarList}">
             <DataGrid.Columns>
                 <DataGridTextColumn
-            Header="Модель"
+            Header="Модель (марка)"
             Binding="{Binding Name}"/>
                 <DataGridTextColumn
             Header="Скорость"
@@ -91,9 +79,50 @@
             Binding="{Binding Legko}"/>
             </DataGrid.Columns>
          </DataGrid><Image Source="/Photo/Логотип_ФГК.png" Grid.RowSpan="2"/>
+        <WrapPanel Grid.Column="1">
+            <Label 
+    Content="Виды:"
+    VerticalAlignment="Center"/>
+            
 
+            <ComboBox
+    Name="LegkoFilterComboBox"
+    SelectionChanged="LegkoFilterComboBox_SelectionChanged"
+    VerticalAlignment="Center"
+    MinWidth="100"
+    SelectedIndex="0"
+    ItemsSource="{Binding LegkoList}">
+
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <Label 
+                Content="{Binding Title}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <Label 
+    Content="Искать" 
+    VerticalAlignment="Center"/>
+            <TextBox
+    Width="200"
+    VerticalAlignment="Center"
+    x:Name="SearchFilterTextBox" 
+    KeyUp="SearchFilter_KeyUp" TextChanged="SearchFilterTextBox_TextChanged"/>
+            <RadioButton
+    GroupName="Name"
+    Tag="1"
+    Content="по возрастанию"
+    IsChecked="True" 
+    Checked="RadioButton_Checked"
+    VerticalAlignment="Center"/>
+            <RadioButton
+    GroupName="Name"
+    Tag="2"
+    Content="по убыванию"
+    Checked="RadioButton_Checked"
+    VerticalAlignment="Center"/>
+        </WrapPanel>
     </Grid>
-</Window>
 
 
-![](./Lab8_2.jpg)
+![](./Lab8_3.jpg)
