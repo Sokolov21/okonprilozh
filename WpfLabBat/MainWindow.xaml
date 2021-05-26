@@ -43,6 +43,26 @@
             Binding="{Binding Legko}"/>
             </DataGrid.Columns>
          </DataGrid><Image Source="/Photo/Логотип_ФГК.png" Grid.RowSpan="2"/>
+        <WrapPanel Grid.Column="1">
+            <Label 
+    Content="Виды:"
+    VerticalAlignment="Center"/>
 
+            <ComboBox
+    Name="LegkoFilterComboBox"
+    SelectionChanged="LegkoFilterComboBox_SelectionChanged"
+    VerticalAlignment="Center"
+    MinWidth="100"
+    SelectedIndex="0"
+    ItemsSource="{Binding LegkoList}">
+
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <Label 
+                Content="{Binding Title}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </WrapPanel>
     </Grid>
 </Window>
