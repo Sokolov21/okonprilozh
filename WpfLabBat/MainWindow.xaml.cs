@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfLabBat.Model;
 
 namespace WpfLabBat
 {
@@ -20,9 +21,17 @@ namespace WpfLabBat
     /// </summary>
     public partial class MainWindow : Window
     {
+        public IEnumerable<Car> CarList { get; set; }
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = this;
+            Globals.dataProvider = new LocalDataProvider();
+            CarList = Globals.dataProvider.GetCars();
+        }
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }

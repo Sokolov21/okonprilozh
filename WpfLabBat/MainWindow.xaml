@@ -6,9 +6,9 @@
         xmlns:local="clr-namespace:WpfLabBat"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <Grid ShowGridLines="True">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition Height="50"></RowDefinition>
         </Grid.RowDefinitions>
@@ -17,12 +17,32 @@
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <StackPanel VerticalAlignment="Bottom" Grid.RowSpan="3">
-            <Button Content="Button1"/>
+            <Button Content="Выход" Height="50"/>
         </StackPanel>
-        <WrapPanel Grid.Column="1" ItemWidth="600">
-            <Button Background="Blue" Content="1" />
-            <Button Background="White" Content="2" />
-            <Button Background="Red" Content="3" />
-        </WrapPanel>
+            <DataGrid
+    Grid.Row="1"
+    Grid.Column="1"
+    CanUserAddRows="False"
+    AutoGenerateColumns="False"
+    ItemsSource="{Binding CarList}">
+            <DataGrid.Columns>
+                <DataGridTextColumn
+            Header="Модель"
+            Binding="{Binding Name}"/>
+                <DataGridTextColumn
+            Header="Скорость"
+            Binding="{Binding Speed}"/>
+                <DataGridTextColumn
+            Header="Грузоподъемность"
+            Binding="{Binding LiftingCapacity}"/>
+                <DataGridTextColumn
+            Header="Цена"
+            Binding="{Binding Cena}"/>
+            <DataGridTextColumn
+            Header="Тип"
+            Binding="{Binding Legko}"/>
+            </DataGrid.Columns>
+         </DataGrid><Image Source="/Photo/Логотип_ФГК.png" Grid.RowSpan="2"/>
+
     </Grid>
 </Window>
